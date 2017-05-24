@@ -205,6 +205,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114711432476891334, guid: dc53c872d7e29ba479dd29273dd98d0a,
+        type: 2}
+      propertyPath: BeltSpeedUpTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
   m_IsPrefabParent: 0

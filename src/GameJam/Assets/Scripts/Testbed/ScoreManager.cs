@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour {
-
-	// Use this for initialization
+    
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void AddItemToScore(PlayerController _player, Item _item)
+    {
+
+    }
 }

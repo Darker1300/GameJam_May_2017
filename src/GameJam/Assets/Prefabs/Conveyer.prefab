@@ -342,6 +342,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BeltTopTransform: {fileID: 4827731823140402}
-  Radius: 8.5
-  Quantity: 9
-  DegreesOffset: 0
+  BeltRadius: 8.5
+  BeltCapacity: 21
+  BeltOffset: 0

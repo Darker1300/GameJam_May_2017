@@ -11,6 +11,13 @@ public class BeltManager : MonoBehaviour
     public int BeltCapacity = 10;
     public float BeltOffset = 0.0f;
 
+    [Header("Speed Control")]
+    public float BeltSpeedTarget = 0.5f;
+    public float BeltAccelerationTime = 1.0f;
+    private float BeltSpeedVelocity = 0.0f;
+    public float BeltSpeedCurrentOffset = 0.0f;
+
+
     void Start()
     {
         if (!BeltTopTransform) BeltTopTransform = this.transform;
@@ -18,14 +25,20 @@ public class BeltManager : MonoBehaviour
 
     void Update()
     {
+        BeltSpeedCurrentOffset = Mathf.SmoothDamp(BeltSpeedCurrentOffset, BeltSpeedTarget, ref BeltSpeedVelocity, BeltAccelerationTime);
+    }
 
+    void FixedUpdate()
+    {
+        BeltOffset += BeltSpeedCurrentOffset;
     }
 
     void OnDrawGizmosSelected()
     {
         if (!BeltTopTransform) BeltTopTransform = this.transform;
+
         Gizmos.DrawWireSphere(BeltTopTransform.position, BeltRadius);
-        float interval = 360.0f / BeltCapacity;
+
         for (int i = 0; i < BeltCapacity; i++)
             Gizmos.DrawWireSphere(DegreesToPosition(IndexToDegrees(i)), 0.5f);
     }
