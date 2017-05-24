@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class BeltManager : MonoBehaviour
 {
+    ItemManager itemManager = null;
+    public List<GameObject> currentItems = new List<GameObject>();
+
     [Header("Transform")]
     public Transform BeltTopTransform = null;
     public float BeltRadius = 8.5f;

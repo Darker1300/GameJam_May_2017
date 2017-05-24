@@ -345,3 +345,6 @@ MonoBehaviour:
   BeltRadius: 8.5
   BeltCapacity: 21
   BeltOffset: 0
+  BeltSpeedTarget: 0.5
+  BeltAccelerationTime: 1
+  BeltSpeedCurrentOffset: 0

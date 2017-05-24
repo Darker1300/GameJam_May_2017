@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemManager : MonoBehaviour {
-
+public class ItemManager : MonoBehaviour
+{
     [Header("Spawnable Items")]
     public List<GameObject> items = new List<GameObject>();
 
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
+    void Start()
+    {
+    }
+
+    void Update()
+    {
+    }
 }
