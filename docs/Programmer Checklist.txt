@@ -1,0 +1,36 @@
+
+
+	RoundManager - E
+		- Receive player select from MenuManager
+		- Trigger Start/Stop Belt Rotation
+		- Handle Time UI
+	ScoreManager - D
+		- Add Item to player Score
+		- Handle Score UI
+	ItemManger - E
+		- Handling Item prefabs
+		- Spawning Items
+	BeltManager - E
+		- Belt Rotation, Moving Attached Items
+	PlayerController - D
+		- Input/Movement
+		- Speed
+		- Grab Event
+		- Shiny Leader
+		
+	Item (on Prefab) [Requires MeshFilter] - E
+		- Spawn Ratio
+		- ItemType
+		- PointValue
+		- SpeedModifier
+		- SpeedTime
+	
+	MenuManager - D
+		- Change Scenes
+		- Player Select
+		
+		
+		
+	UI  - D
+		- Points, above item
+		- Scores, Corners On screen
