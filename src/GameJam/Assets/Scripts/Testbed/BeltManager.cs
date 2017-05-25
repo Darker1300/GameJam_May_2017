@@ -94,7 +94,7 @@ public class BeltManager : MonoBehaviour
         BeltPlateController bpc = _beltPlateObj.GetComponent<BeltPlateController>();
 
         Vector3 pos = bpc.itemAnchor.position;
-        GameObject go = GameObject.Instantiate(model, pos, Quaternion.identity, bpc.itemAnchor);
+        GameObject.Instantiate(model, pos, Quaternion.identity, bpc.itemAnchor);
 
         //go.transform.LookAt(BeltTopTransform);
     }
