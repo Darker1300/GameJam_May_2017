@@ -4336,6 +4336,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  RoundDurationChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   RoundEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -4356,9 +4361,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  roundTimerStarted: 0
-  roundTimerStart: 60
-  roundTimerCurrent: 0
+  startTimerStarted: 0
+  startTimerStart: 5
+  startTimerCurrent: 0
+  durationTimerStarted: 0
+  durationTimerStart: 45
+  durationTimerCurrent: 0
 --- !u!4 &911057008
 Transform:
   m_ObjectHideFlags: 0
@@ -7418,6 +7426,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  RoundDurationChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   RoundEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -7438,9 +7451,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  roundTimerStarted: 0
-  roundTimerStart: 25
-  roundTimerCurrent: 0
+  startTimerStarted: 0
+  startTimerStart: 5
+  startTimerCurrent: 0
+  durationTimerStarted: 0
+  durationTimerStart: 45
+  durationTimerCurrent: 0
 --- !u!4 &1269507352
 Transform:
   m_ObjectHideFlags: 0
