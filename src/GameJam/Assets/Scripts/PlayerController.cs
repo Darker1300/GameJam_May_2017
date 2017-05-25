@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    bool playerIndexSet = false;
+   // bool playerIndexSet = false;
  
 
     public GameObject Player;
-    public GameObject PlayerVacuum;
+    public ParticleSystem PlayerVacuum;
 
    
 
@@ -37,8 +37,9 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag == ("Player" + i.ToString()))
             {
                 Player = GameObject.FindGameObjectWithTag("Player" + i.ToString());
-                PlayerVacuum = GameObject.FindGameObjectWithTag("Vacuum" + i.ToString());
-                            
+                PlayerVacuum = GameObject.FindGameObjectWithTag("Vacuum" + i.ToString()).GetComponent<ParticleSystem>();
+                PlayerVacuum.Pause();
+               
             }  
         }
 
@@ -76,7 +77,13 @@ public class PlayerController : MonoBehaviour
             if (Player.tag == "Player" + i.ToString())
             {
                 vacuumTime += Time.deltaTime;
-
+                if (vacuumTime >= vacuumTimer)
+                {
+                    playerIsVacuuming = false;
+                    PlayerVacuum.Pause();
+                    PlayerVacuum.Clear();
+                }
+                    
 
                 if (Input.GetButton("A" + i.ToString()))
                 {
@@ -84,8 +91,11 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
                     if (!playerIsVacuuming && vacuumTime > vacuumTimer)
                     {
-                        Instantiate(PlayerVacuum, Player.transform.forward, Quaternion.identity);
-                        playerIsVacuuming = true;
+                        if (!playerIsVacuuming)
+                        {
+                            PlayerVacuum.Play();
+                            playerIsVacuuming = true;
+                        }
                         vacuumTime = 0;
                     }
                 }
@@ -95,7 +105,7 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Player" + i.ToString() + "Buttone B" + i.ToString());
                 }
                 Vector3 newForward = new Vector3(Input.GetAxis("Horizontal" + i.ToString()), 0, Input.GetAxis("Vertical" + i.ToString())).normalized;
-                if (newForward != Vector3.zero)
+                if (newForward != Vector3.zero && !playerIsVacuuming)
                 {
 
 
