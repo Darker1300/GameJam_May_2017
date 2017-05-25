@@ -7,30 +7,46 @@ public class BeltPlateController : MonoBehaviour
     public int beltIndex = -1;
     public Transform itemAnchor = null;
 
-    public float cooldown = 1;
+    public float cooldown = -1.0f;
+
+    public bool HasItem { get { return itemAnchor.childCount != 0; } }
+    public bool isLowered = false;
+
+    BeltManager beltManager = null;
+    Animator animator = null;
 
     void Start()
     {
         itemAnchor = transform.Find("Plate/ItemAnchor");
-        GetComponent<Animator>().SetBool("StartLower", true);
+        beltManager = GameObject.FindGameObjectWithTag("BeltManager").GetComponent<BeltManager>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if (cooldown > 0)
+        if (isLowered)
         {
-            cooldown -= Time.deltaTime;
-            if (cooldown < 0)
+            if (cooldown <= 0)
             {
-                cooldown = 0;
+                cooldown = -1;
+                isLowered = false;
                 // Request Item
-                GameObject go = GameObject.FindGameObjectWithTag("BeltManager");
-                BeltManager bm = go.GetComponent<BeltManager>();
-                bm.AddItemToBeltPlate(gameObject);
-                GetComponent<Animator>().SetBool("StartLower", false);
-                GetComponent<Animator>().SetBool("StartRaise", true);
+                if (!HasItem)
+                    beltManager.AddItemToBeltPlate(gameObject);
+                animator.SetBool("StartLower", false);
+                animator.SetBool("StartRaise", true);
+            }
+            else
+            {
+                cooldown -= Time.deltaTime;
             }
         }
+    }
+
+    public void Restock(float _delay = 0.0f)
+    {
+        (animator == null ? GetComponent<Animator>() : animator).SetBool("StartLower", true);
+        cooldown = _delay;
     }
 
 }
