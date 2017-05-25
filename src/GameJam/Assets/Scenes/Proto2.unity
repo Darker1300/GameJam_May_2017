@@ -195,9 +195,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerVacuum: {fileID: 0}
-  PlayerDex: 0
   playerMoveSpeed: 0
   modelForward: 0
+  vacuumTimer: 0
 --- !u!135 &31162504
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -220,10 +220,10 @@ Rigidbody:
   m_Mass: 331.3
   m_Drag: 0
   m_AngularDrag: 356.15
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 100
   m_CollisionDetection: 0
 --- !u!4 &31162506
 Transform:
@@ -429,9 +429,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerVacuum: {fileID: 0}
-  PlayerDex: 0
   playerMoveSpeed: 0
   modelForward: 0
+  vacuumTimer: 0
 --- !u!135 &200678703
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -454,10 +454,10 @@ Rigidbody:
   m_Mass: 331.3
   m_Drag: 0
   m_AngularDrag: 356.15
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 100
   m_CollisionDetection: 0
 --- !u!4 &200678705
 Transform:
@@ -774,7 +774,7 @@ Prefab:
     - target: {fileID: 198512591212345768, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65517707947560064, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
@@ -1430,7 +1430,7 @@ Prefab:
     - target: {fileID: 198512591212345768, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65517707947560064, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
@@ -1554,9 +1554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerVacuum: {fileID: 0}
-  PlayerDex: 0
   playerMoveSpeed: 2
   modelForward: 0
+  vacuumTimer: 0
 --- !u!135 &1351610630
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1579,10 +1579,10 @@ Rigidbody:
   m_Mass: 331.3
   m_Drag: 0
   m_AngularDrag: 356.15
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 100
   m_CollisionDetection: 0
 --- !u!4 &1351610632
 Transform:
@@ -1821,7 +1821,7 @@ Prefab:
     - target: {fileID: 198512591212345768, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65517707947560064, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
@@ -1940,9 +1940,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerVacuum: {fileID: 0}
-  PlayerDex: 0
   playerMoveSpeed: 0
   modelForward: 0
+  vacuumTimer: 0
 --- !u!135 &1481464635
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1965,10 +1965,10 @@ Rigidbody:
   m_Mass: 331.3
   m_Drag: 0
   m_AngularDrag: 356.15
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 100
   m_CollisionDetection: 0
 --- !u!4 &1481464637
 Transform:
@@ -2051,12 +2051,12 @@ Prefab:
     - target: {fileID: 198512591212345768, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
       propertyPath: randomSeed
-      value: -1341285455
+      value: 571932721
       objectReference: {fileID: 0}
     - target: {fileID: 198512591212345768, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65517707947560064, guid: 35d27b16a3b392f4ba4f10da9f89f185,
         type: 2}
