@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
                 if (vacuumTime >= vacuumTimer)
                 {
                     playerIsVacuuming = false;
+                    PlayerVacuum.GetComponent<BoxCollider>().enabled = false;
                     PlayerVacuum.Pause();
                     PlayerVacuum.Clear();
                 }
@@ -88,13 +89,14 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetButton("A" + i.ToString()))
                 {
 
-                    Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
+                  //  Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
                     if (!playerIsVacuuming && vacuumTime > vacuumTimer)
                     {
                         if (!playerIsVacuuming)
                         {
                             PlayerVacuum.Play();
                             playerIsVacuuming = true;
+                            PlayerVacuum.GetComponent<BoxCollider>().enabled = true;
                         }
                         vacuumTime = 0;
                     }
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetButton("B" + i.ToString()))
                 {
 
-                    Debug.Log("Player" + i.ToString() + "Buttone B" + i.ToString());
+                 //   Debug.Log("Player" + i.ToString() + "Button B" + i.ToString());
                 }
                 Vector3 newForward = new Vector3(Input.GetAxis("Horizontal" + i.ToString()), 0, Input.GetAxis("Vertical" + i.ToString())).normalized;
                 if (newForward != Vector3.zero && !playerIsVacuuming)
