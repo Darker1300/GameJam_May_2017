@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class BeltManager : MonoBehaviour
 {
-    ItemManager itemManager = null;
+    public ItemManager itemManager = null;
     public List<GameObject> currentItems = new List<GameObject>();
 
     [Header("Transform")]
@@ -17,13 +17,15 @@ public class BeltManager : MonoBehaviour
     [Header("Speed Control")]
     public float BeltSpeedTarget = 0.5f;
     public float BeltAccelerationTime = 1.0f;
-    private float BeltSpeedVelocity = 0.0f;
     public float BeltSpeedCurrentOffset = 0.0f;
+    float BeltSpeedVelocity = 0.0f;
 
-
+    #region Events
     void Start()
     {
         if (!BeltTopTransform) BeltTopTransform = this.transform;
+
+       // FillBelt();
     }
 
     void Update()
@@ -34,6 +36,15 @@ public class BeltManager : MonoBehaviour
     void FixedUpdate()
     {
         BeltOffset += BeltSpeedCurrentOffset;
+
+        for (int i = 0; i < BeltCapacity; i++)
+        {
+            if (currentItems[i] != null)
+            {
+                currentItems[i].transform.localPosition = IndexToPosition(i);
+                currentItems[i].transform.LookAt(BeltTopTransform);
+            }
+        }
     }
 
     void OnDrawGizmosSelected()
@@ -44,6 +55,39 @@ public class BeltManager : MonoBehaviour
 
         for (int i = 0; i < BeltCapacity; i++)
             Gizmos.DrawWireSphere(DegreesToPosition(IndexToDegrees(i)), 0.5f);
+
+      //  ClearBelt();
+    }
+    #endregion
+
+    public void FillBelt()
+    {
+        for (int i = 0; i < BeltCapacity; i++)
+        {
+            GameObject model = itemManager.GetItemModel();
+            Vector3 pos = IndexToPosition(i);
+            GameObject go = GameObject.Instantiate(model, pos, Quaternion.identity, BeltTopTransform);
+            go.transform.LookAt(BeltTopTransform);
+            currentItems.Add(go);
+        }
+    }
+
+    public void ClearBelt()
+    {
+        //TODO
+        for (int i = 0; i < currentItems.Count; i++)
+        {
+            if (currentItems[i] != null)
+            {
+                GameObject.Destroy(currentItems[i]);
+                currentItems[i] = null;
+            }
+        }
+    }
+
+    void AddItem()
+    {
+
     }
 
     float IndexToDegrees(int i)
@@ -57,5 +101,10 @@ public class BeltManager : MonoBehaviour
         pos.x += BeltRadius * Mathf.Sin(_degrees * Mathf.Deg2Rad);
         pos.z += BeltRadius * Mathf.Cos(_degrees * Mathf.Deg2Rad);
         return pos;
+    }
+
+    Vector3 IndexToPosition(int i)
+    {
+        return DegreesToPosition(IndexToDegrees(i));
     }
 }
