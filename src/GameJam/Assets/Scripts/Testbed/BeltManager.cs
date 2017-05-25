@@ -6,7 +6,9 @@ using UnityEngine.Events;
 public class BeltManager : MonoBehaviour
 {
     public ItemManager itemManager = null;
-    public List<GameObject> currentItems = new List<GameObject>();
+    public List<GameObject> beltPlates = new List<GameObject>();
+
+    public GameObject BeltPlatePrefab = null;
 
     [Header("Transform")]
     public Transform BeltTopTransform = null;
@@ -25,24 +27,26 @@ public class BeltManager : MonoBehaviour
     {
         if (!BeltTopTransform) BeltTopTransform = this.transform;
 
-       // FillBelt();
-    }
-
-    void Update()
-    {
-        BeltSpeedCurrentOffset = Mathf.SmoothDamp(BeltSpeedCurrentOffset, BeltSpeedTarget, ref BeltSpeedVelocity, BeltAccelerationTime);
+        FillBelt();
     }
 
     void FixedUpdate()
     {
+        BeltSpeedCurrentOffset = Mathf.SmoothDamp(BeltSpeedCurrentOffset, BeltSpeedTarget, ref BeltSpeedVelocity, BeltAccelerationTime);
         BeltOffset += BeltSpeedCurrentOffset;
 
         for (int i = 0; i < BeltCapacity; i++)
         {
-            if (currentItems[i] != null)
+            if (beltPlates[i] != null)
             {
-                currentItems[i].transform.localPosition = IndexToPosition(i);
-                currentItems[i].transform.LookAt(BeltTopTransform);
+                Vector3 pos = IndexToPosition(i);
+                pos.y = beltPlates[i].transform.localPosition.y;
+                beltPlates[i].transform.localPosition = pos;
+
+                Vector3 lookPoint = BeltTopTransform.position;
+                lookPoint.y = pos.y;
+
+                beltPlates[i].transform.LookAt(lookPoint);
             }
         }
     }
@@ -56,7 +60,7 @@ public class BeltManager : MonoBehaviour
         for (int i = 0; i < BeltCapacity; i++)
             Gizmos.DrawWireSphere(DegreesToPosition(IndexToDegrees(i)), 0.5f);
 
-      //  ClearBelt();
+
     }
     #endregion
 
@@ -64,30 +68,35 @@ public class BeltManager : MonoBehaviour
     {
         for (int i = 0; i < BeltCapacity; i++)
         {
-            GameObject model = itemManager.GetItemModel();
             Vector3 pos = IndexToPosition(i);
-            GameObject go = GameObject.Instantiate(model, pos, Quaternion.identity, BeltTopTransform);
-            go.transform.LookAt(BeltTopTransform);
-            currentItems.Add(go);
+            GameObject go = GameObject.Instantiate(BeltPlatePrefab, pos, Quaternion.identity, BeltTopTransform);
+            beltPlates.Add(go);
+            BeltPlateController bpc = go.GetComponent<BeltPlateController>();
+            bpc.beltIndex = i;
         }
     }
 
     public void ClearBelt()
     {
-        //TODO
-        for (int i = 0; i < currentItems.Count; i++)
+        for (int i = 0; i < beltPlates.Count; i++)
         {
-            if (currentItems[i] != null)
+            if (beltPlates[i] != null)
             {
-                GameObject.Destroy(currentItems[i]);
-                currentItems[i] = null;
+                GameObject.Destroy(beltPlates[i]);
+                beltPlates[i] = null;
             }
         }
     }
 
-    void AddItem()
+    public void AddItemToBeltPlate(GameObject _beltPlateObj)
     {
+        GameObject model = itemManager.GetItemModel();
+        BeltPlateController bpc = _beltPlateObj.GetComponent<BeltPlateController>();
 
+        Vector3 pos = bpc.itemAnchor.position;
+        GameObject go = GameObject.Instantiate(model, pos, Quaternion.identity, bpc.itemAnchor);
+
+        //go.transform.LookAt(BeltTopTransform);
     }
 
     float IndexToDegrees(int i)
@@ -106,5 +115,12 @@ public class BeltManager : MonoBehaviour
     Vector3 IndexToPosition(int i)
     {
         return DegreesToPosition(IndexToDegrees(i));
+    }
+
+    public void AddItemToPlateChild(GameObject _item)
+    {
+        BeltPlateController bPlate = _item.GetComponentInParent<BeltPlateController>();
+        Animator anim = bPlate.GetComponent<Animator>();
+        anim.SetBool("StartLower", true);
     }
 }
