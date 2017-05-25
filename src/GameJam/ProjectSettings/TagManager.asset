@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player1
+  - Player2
+  - Player3
+  - Player4
+  - Vacuum1
+  - Vacuum2
+  - Vacuum3
+  - Vacuum4
   layers:
   - Default
   - TransparentFX
@@ -14,8 +22,8 @@ TagManager:
   - 
   - 
   - Item
-  - 
-  - 
+  - Player
+  - Vacuum
   - 
   - 
   - 
