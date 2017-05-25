@@ -58,7 +58,7 @@ public class RoundManager : MonoBehaviour
     void OnRoundEnd()
     {
         // Debug.Log("Round End!");
-        beltManager.ClearBelt();
+        beltManager.DestroyBelt();
     }
 
     void OnRoundTimerStart()
@@ -66,14 +66,16 @@ public class RoundManager : MonoBehaviour
         // Debug.Log("Round Timer Start!");
         roundTimerStarted = true;
         roundTimerCurrent = roundTimerStart;
+
+        beltManager.FillBelt();
         // Show UI
     }
 
     void OnRoundTimerEnd()
     {
+        //Debug.Log("Round Timer End!");
         roundTimerStarted = false;
         RoundStart.Invoke();
-        // Debug.Log("Round Timer End!");
     }
 
     void OnRoundTimerChanged()

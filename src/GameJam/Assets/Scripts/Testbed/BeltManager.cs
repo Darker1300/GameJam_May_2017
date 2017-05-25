@@ -27,7 +27,7 @@ public class BeltManager : MonoBehaviour
     {
         if (!BeltTopTransform) BeltTopTransform = this.transform;
 
-        FillBelt();
+        CreateBelt();
     }
 
     void FixedUpdate()
@@ -59,12 +59,10 @@ public class BeltManager : MonoBehaviour
 
         for (int i = 0; i < BeltCapacity; i++)
             Gizmos.DrawWireSphere(DegreesToPosition(IndexToDegrees(i)), 0.5f);
-
-
     }
     #endregion
 
-    public void FillBelt()
+    public void CreateBelt()
     {
         for (int i = 0; i < BeltCapacity; i++)
         {
@@ -76,7 +74,7 @@ public class BeltManager : MonoBehaviour
         }
     }
 
-    public void ClearBelt()
+    public void DestroyBelt()
     {
         for (int i = 0; i < beltPlates.Count; i++)
         {
@@ -87,6 +85,20 @@ public class BeltManager : MonoBehaviour
             }
         }
     }
+
+    public void FillBelt()
+    {
+        for (int i = 0; i < beltPlates.Count; i++)
+        {
+            beltPlates[i].GetComponent<BeltPlateController>().Restock(1.0f);
+        }
+    }
+
+    public void ClearBelt()
+    {
+
+    }
+
 
     public void AddItemToBeltPlate(GameObject _beltPlateObj)
     {
@@ -117,9 +129,9 @@ public class BeltManager : MonoBehaviour
         return DegreesToPosition(IndexToDegrees(i));
     }
 
-    public void AddItemToPlateChild(GameObject _item)
+    public void QueuePlateRestock(GameObject _plateChild)
     {
-        BeltPlateController bPlate = _item.GetComponentInParent<BeltPlateController>();
+        BeltPlateController bPlate = _plateChild.GetComponentInParent<BeltPlateController>();
         Animator anim = bPlate.GetComponent<Animator>();
         anim.SetBool("StartLower", true);
     }
