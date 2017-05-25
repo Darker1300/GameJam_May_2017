@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
                             PlayerVacuum.Play();
                             playerIsVacuuming = true;
                             PlayerVacuum.GetComponent<BoxCollider>().enabled = true;
+                            
                         }
                         vacuumTime = 0;
                     }
