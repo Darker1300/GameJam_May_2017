@@ -94,12 +94,6 @@ public class BeltManager : MonoBehaviour
         }
     }
 
-    public void ClearBelt()
-    {
-
-    }
-
-
     public void AddItemToBeltPlate(GameObject _beltPlateObj)
     {
         GameObject model = itemManager.GetItemModel();
@@ -107,8 +101,6 @@ public class BeltManager : MonoBehaviour
 
         Vector3 pos = bpc.itemAnchor.position;
         GameObject.Instantiate(model, pos, Quaternion.identity, bpc.itemAnchor);
-
-        //go.transform.LookAt(BeltTopTransform);
     }
 
     float IndexToDegrees(int i)
@@ -129,10 +121,9 @@ public class BeltManager : MonoBehaviour
         return DegreesToPosition(IndexToDegrees(i));
     }
 
-    public void QueuePlateRestock(GameObject _plateChild)
+    public void RequestRestock(GameObject _plateChild, float _delay = 0.0f)
     {
         BeltPlateController bPlate = _plateChild.GetComponentInParent<BeltPlateController>();
-        Animator anim = bPlate.GetComponent<Animator>();
-        anim.SetBool("StartLower", true);
+        bPlate.Restock(_delay);
     }
 }
