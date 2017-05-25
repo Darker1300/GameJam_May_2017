@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     public GameObject Player;
     public GameObject PlayerVacuum;
 
-    public int PlayerDex;
+   
+
 
     public float playerMoveSpeed;
     //  static float moveSpeedModifier;
@@ -22,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit hit;  // Used for finding if enemy is in line of sight
     private Vector3 rayDirection;
+
+    private bool playerIsVacuuming = false;
+    public float vacuumTimer;
+    private float vacuumTime;
 
     // Use this for initialization
     void Start()
@@ -33,11 +38,11 @@ public class PlayerController : MonoBehaviour
             {
                 Player = GameObject.FindGameObjectWithTag("Player" + i.ToString());
                 PlayerVacuum = GameObject.FindGameObjectWithTag("Vacuum" + i.ToString());
-                PlayerDex = i;                
+                            
             }  
         }
-        
 
+        vacuumTimer = 1;
         playerMoveSpeed = 5;
         modelForward = 225;
       //  moveSpeedModifier = 1;
@@ -67,13 +72,22 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 1; i <= 4; i++)
         {
+            
             if (Player.tag == "Player" + i.ToString())
             {
+                vacuumTime += Time.deltaTime;
+
+
                 if (Input.GetButton("A" + i.ToString()))
                 {
 
                     Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
-                    Instantiate(PlayerVacuum, Player.transform.forward, Quaternion.identity);
+                    if (!playerIsVacuuming && vacuumTime > vacuumTimer)
+                    {
+                        Instantiate(PlayerVacuum, Player.transform.forward, Quaternion.identity);
+                        playerIsVacuuming = true;
+                        vacuumTime = 0;
+                    }
                 }
                 if (Input.GetButton("B" + i.ToString()))
                 {
