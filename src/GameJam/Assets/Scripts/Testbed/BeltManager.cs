@@ -39,14 +39,12 @@ public class BeltManager : MonoBehaviour
         {
             if (beltPlates[i] != null)
             {
+                Transform plateTransform = beltPlates[i].transform;
                 Vector3 pos = IndexToPosition(i);
-                pos.y = beltPlates[i].transform.localPosition.y;
-                beltPlates[i].transform.localPosition = pos;
+                plateTransform.localPosition = new Vector3(pos.x, plateTransform.localPosition.y, pos.z);
 
-                Vector3 lookPoint = BeltTopTransform.position;
-                lookPoint.y = pos.y;
-
-                beltPlates[i].transform.LookAt(lookPoint);
+                Vector3 lookPoint = new Vector3(BeltTopTransform.position.x, plateTransform.position.y, BeltTopTransform.position.z);
+                plateTransform.LookAt(lookPoint);
             }
         }
     }
