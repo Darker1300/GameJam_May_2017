@@ -59,6 +59,8 @@ public class RoundManager : MonoBehaviour
     {
         // Debug.Log("Round End!");
         beltManager.ClearBelt();
+
+     
     }
 
     void OnRoundTimerStart()
@@ -73,6 +75,8 @@ public class RoundManager : MonoBehaviour
     {
         roundTimerStarted = false;
         RoundStart.Invoke();
+        for (int i = 1; i <= 4; i++)
+            Debug.Log(GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().score);
         // Debug.Log("Round Timer End!");
     }
 

@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     public GameObject Player;
     public ParticleSystem PlayerVacuum;
 
-   
+    [HideInInspector]
+    public int score;
 
 
     public float playerMoveSpeed;
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private RaycastHit hit;  // Used for finding if enemy is in line of sight
     private Vector3 rayDirection;
 
-    private bool playerIsVacuuming = false;
+    public bool playerIsVacuuming = false;
     public float vacuumTimer;
     private float vacuumTime;
 
@@ -86,10 +87,10 @@ public class PlayerController : MonoBehaviour
                 }
                     
 
-                if (Input.GetButton("A" + i.ToString()))
+                if (Input.GetButton("A" + i.ToString()) && !playerIsVacuuming)
                 {
 
-                  //  Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
+                    Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
                     if (!playerIsVacuuming && vacuumTime > vacuumTimer)
                     {
                         if (!playerIsVacuuming)
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetButton("B" + i.ToString()))
                 {
 
-                 //   Debug.Log("Player" + i.ToString() + "Button B" + i.ToString());
+                    Debug.Log("Player" + i.ToString() + "Button B" + i.ToString());
                 }
                 Vector3 newForward = new Vector3(Input.GetAxis("Horizontal" + i.ToString()), 0, Input.GetAxis("Vertical" + i.ToString())).normalized;
                 if (newForward != Vector3.zero && !playerIsVacuuming)
