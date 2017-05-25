@@ -134,7 +134,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnWeight: 2
-  pointValue: 5
+  pointValue: 4328
   itemType: 0
   speedModifier: 0
   speedTime: 1
+  respawnMin: 4
+  respawnMax: 4
+  moveToPlayerSpeed: 0
