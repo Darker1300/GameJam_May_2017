@@ -12,6 +12,7 @@ TagManager:
   - Vacuum2
   - Vacuum3
   - Vacuum4
+  - BeltManager
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Item
   - Player
   - Vacuum
-  - 
+  - ControlArea
   - 
   - 
   - 
