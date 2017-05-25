@@ -32,7 +32,7 @@ public class RoundManager : MonoBehaviour
         RoundTimerEnd.AddListener(OnRoundTimerEnd);
 
         // Trigger Belt to fill itself upon scene load
-        beltManager.FillBelt();
+        //beltManager.FillBelt();
 
         // Assume Timer starts as soon as scene loads
         roundTimerStarted = true;
@@ -53,13 +53,12 @@ public class RoundManager : MonoBehaviour
     void OnRoundStart()
     {
         // Debug.Log("Round Start!");
-        // Clear the belt
-        beltManager.ClearBelt();
     }
 
     void OnRoundEnd()
     {
         // Debug.Log("Round End!");
+        beltManager.ClearBelt();
     }
 
     void OnRoundTimerStart()
