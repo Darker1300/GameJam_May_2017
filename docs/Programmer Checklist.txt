@@ -24,6 +24,8 @@
 		- PointValue
 		- SpeedModifier
 		- SpeedTime
+		
+	BeltPlateController
 	
 	MenuManager - D
 		- Change Scenes

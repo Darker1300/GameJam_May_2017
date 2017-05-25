@@ -59,7 +59,7 @@ public class RoundManager : MonoBehaviour
     {
         // Debug.Log("Round End!");
 
-     
+
     }
 
     void OnRoundTimerStart()
@@ -76,7 +76,10 @@ public class RoundManager : MonoBehaviour
         roundTimerStarted = false;
         RoundStart.Invoke();
         for (int i = 1; i <= 4; i++)
-            Debug.Log(GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().score);
+        {
+            GameObject go = GameObject.FindGameObjectWithTag("Player" + i.ToString());
+            if (go) Debug.Log(go.GetComponent<PlayerController>().score);
+        }
         // Debug.Log("Round Timer End!");
     }
 
