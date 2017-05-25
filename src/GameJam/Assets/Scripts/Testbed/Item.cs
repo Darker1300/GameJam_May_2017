@@ -49,17 +49,33 @@ public class Item : MonoBehaviour
                 gameObject.transform.localScale.y * 0.99f, gameObject.transform.localScale.z * 0.99f);
             
 
-                //gameObject.transform.Translate(0, -100, 0);
-                //gameObject.transform.localScale = scrapLocalScale;
-                //scrapLifeTimer = scrapLifeTime;
-              //  gameObject.SetActive(false);
-            
+              
         }
 
 
     }
 
-    void OnTriggerEnter(Collider other)
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    for (int i = 1; i <= 4; i++)
+    //    {
+    //        if (other.gameObject.tag == "Vacuum" + i.ToString() && other.gameObject.transform.parent.GetComponent<PlayerController>().PlayerVacuum)
+    //        {
+    //            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+    //            scoreOwner = i;
+    //            targetLocation = other.gameObject.transform.parent.transform.position;
+    //            this.transform.parent.parent.parent.GetComponent<BeltPlateController>().Restock(Random.Range(2f, 8f));
+    //            Vector3 temp = transform.position; // world pos
+    //            this.gameObject.transform.SetParent(null , true); // *should* not move, but you say...
+    //          //  this.transform.position = temp; // restore world position
+    //            sucked = true;
+    //           // Debug.Log("sucked");
+    //            //destroy 
+    //        }
+    //    }
+
+    //}
+    void OnTriggerStay(Collider other)
     {
         for (int i = 1; i <= 4; i++)
         {
@@ -68,24 +84,7 @@ public class Item : MonoBehaviour
                 other.gameObject.GetComponent<BoxCollider>().enabled = false;
                 scoreOwner = i;
                 targetLocation = other.gameObject.transform.parent.transform.position;
-                Vector3 temp = transform.position; // world pos
-                this.gameObject.transform.SetParent(null , true); // *should* not move, but you say...
-              //  this.transform.position = temp; // restore world position
-                sucked = true;
-               // Debug.Log("sucked");
-                //destroy 
-            }
-        }
-
-    }
-    void OnTriggerStay(Collider other)
-    {
-        for (int i = 1; i <= 4; i++)
-        {
-            if (other.gameObject.tag == "Vacuum" + i.ToString() && !other.gameObject.transform.parent.GetComponent<PlayerController>().PlayerVacuum)
-            {
-                scoreOwner = i;
-                targetLocation = other.gameObject.transform.parent.transform.position;
+                this.transform.parent.parent.parent.GetComponent<BeltPlateController>().Restock(Random.Range(2f, 8f));
                 Vector3 temp = transform.position; // world pos
                 this.gameObject.transform.SetParent(null, true); // *should* not move, but you say...
                                                                  //  this.transform.position = temp; // restore world position
