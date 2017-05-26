@@ -48,8 +48,9 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag == ("Player" + i.ToString()))
             {
                 Player = GameObject.FindGameObjectWithTag("Player" + i.ToString());
-                PlayerVacuum = GameObject.FindGameObjectWithTag("Vacuum" + i.ToString()).GetComponent<ParticleSystem>();
-                PlayerVacuum.Pause();
+                GameObject go = GameObject.FindGameObjectWithTag("Vacuum" + i.ToString());
+                PlayerVacuum = go ? go.GetComponent<ParticleSystem>() : null;
+                if (PlayerVacuum) PlayerVacuum.Pause();
 
             }
         }
