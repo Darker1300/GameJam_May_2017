@@ -53,13 +53,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1865456980075710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.339, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.31258014, w: 0.94989145}
+  m_LocalPosition: {x: -0.5652938, y: 0.0990206, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4988326701322680}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -36.43}
 --- !u!4 &4988326701322680
 Transform:
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1182089325854868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1024357, y: 2.5766308e-16, z: -11.604114}
+  m_LocalPosition: {x: 7.45, y: 1.39, z: 6.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4681131264878988}
@@ -166,4 +166,6 @@ MonoBehaviour:
   speedTime: 1
   respawnMin: 4
   respawnMax: 4
-  moveToPlayerSpeed: 0
+  moveToPlayerSpeed: 7
+  positiveItem: 1
+  negativeItem: 0
