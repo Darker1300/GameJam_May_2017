@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             }  
         }
 
-        vacuumTimer = 1;
+        //vacuumTimer = 1;
         playerMoveSpeed = 5;
         modelForward = 225;
 
