@@ -19,7 +19,8 @@ public class SteamBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         PlayerController pc = animator.GetComponent<PlayerController>();
-        pc.EndSteamEffect();
+        if (pc)
+            pc.EndSteamEffect();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
