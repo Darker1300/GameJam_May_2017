@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public float vacuumTimer;
     private float vacuumTime;
 
+    private AudioManager audioManager;
+
     // Use this for initialization
     void Start()
     {
@@ -48,7 +50,9 @@ public class PlayerController : MonoBehaviour
         vacuumTimer = 1;
         playerMoveSpeed = 5;
         modelForward = 225;
-      //  moveSpeedModifier = 1;
+
+        audioManager = AudioManager.instance;
+        //  moveSpeedModifier = 1;
 
     }
 
@@ -88,7 +92,7 @@ public class PlayerController : MonoBehaviour
                 }
                     
 
-                if (Input.GetButton("A" + i.ToString()) && !playerIsVacuuming)
+                if (Input.GetButton("A" + i.ToString()) && !playerIsVacuuming )
                 {
 
                     Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
@@ -104,10 +108,21 @@ public class PlayerController : MonoBehaviour
                         vacuumTime = 0;
                     }
                 }
-                if (Input.GetButton("B" + i.ToString()))
+                if (Input.GetButton("B" + i.ToString()) && !playerIsVacuuming)
                 {
 
-                    Debug.Log("Player" + i.ToString() + "Button B" + i.ToString());
+                    Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
+                    if (!playerIsVacuuming && vacuumTime > vacuumTimer)
+                    {
+                        if (!playerIsVacuuming)
+                        {
+                            PlayerVacuum.Play();
+                            playerIsVacuuming = true;
+                            PlayerVacuum.GetComponent<BoxCollider>().enabled = true;
+
+                        }
+                        vacuumTime = 0;
+                    }
                 }
                 Vector3 newForward = new Vector3(Input.GetAxis("Horizontal" + i.ToString()), 0, Input.GetAxis("Vertical" + i.ToString())).normalized;
                 if (newForward != Vector3.zero && !playerIsVacuuming && playerMove)
