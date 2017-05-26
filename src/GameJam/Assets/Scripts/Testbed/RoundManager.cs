@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class RoundManager : MonoBehaviour
     public int slowDownTimer = 6;
 
     public GameObject LeaderBoard;
+
+    public Text TimeText = null;
+    public Color Countdown_Start_Color = Color.yellow;
+    public Color Countdown_End_Color = Color.red;
 
     void Start()
     {
@@ -146,6 +151,8 @@ public class RoundManager : MonoBehaviour
     void OnRoundDurationChanged()
     {
         if (durationTimerCurrent <= 0.0f) RoundEnd.Invoke();
+        TimeText.text = Mathf.CeilToInt(durationTimerCurrent).ToString();
+        TimeText.color = Color.Lerp(Countdown_Start_Color, Countdown_End_Color, 1 - (durationTimerCurrent / durationTimerStart));
     }
 
     void OnRoundEnd()
@@ -165,11 +172,13 @@ public class RoundManager : MonoBehaviour
         // Show UI
 
 
-
     }
     void OnRoundTimerChanged()
     {
         if (startTimerCurrent <= 0.0f) RoundTimerEnd.Invoke();
+
+        TimeText.text = Mathf.CeilToInt(startTimerCurrent).ToString();
+        TimeText.color = Color.Lerp(Countdown_Start_Color, Countdown_End_Color, 1 - (startTimerCurrent / startTimerStart));
         // if Timer<=0 Invoke END
         // else Change UI Text to Mathf.Round(TimerValue)
     }
