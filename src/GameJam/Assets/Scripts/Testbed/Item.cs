@@ -114,14 +114,15 @@ public class Item : MonoBehaviour
         {
             audioManager.playItemPositiveSound();
             audioManager.playPlayerVacuumSound();
+			Destroy(this.gameObject);
         }
         else if (negativeItem)
         {
-           // audioManager.playItemNegativeSound();
-           //audioManager.playPlayerVacuumSound();
+            audioManager.playItemNegativeSound();
+           audioManager.playPlayerVacuumSound();
+			Destroy(this.gameObject);
         }
-        else
-            audioManager.playPlayerVacuumSound();
+      
         GameObject go = GameObject.FindGameObjectWithTag("Player" + scoreOwner);
         PlayerController pc = go.GetComponent<PlayerController>();
         if (itemType == ItemType.Danger)
