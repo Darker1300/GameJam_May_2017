@@ -150,9 +150,15 @@ public class RoundManager : MonoBehaviour
 
     void OnRoundDurationChanged()
     {
-        if (durationTimerCurrent <= 0.0f) RoundEnd.Invoke();
-        TimeText.text = Mathf.CeilToInt(durationTimerCurrent).ToString();
-        TimeText.color = Color.Lerp(Countdown_Start_Color, Countdown_End_Color, 1 - (durationTimerCurrent / durationTimerStart));
+        if (durationTimerCurrent <= 0.0f)
+        {
+            RoundEnd.Invoke();
+        }
+        else
+        {
+            TimeText.text = Mathf.CeilToInt(durationTimerCurrent).ToString();
+            TimeText.color = Color.Lerp(Countdown_Start_Color, Countdown_End_Color, 1 - (durationTimerCurrent / durationTimerStart));
+        }
     }
 
     void OnRoundEnd()
