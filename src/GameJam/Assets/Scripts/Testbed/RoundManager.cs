@@ -163,7 +163,7 @@ public class RoundManager : MonoBehaviour
     {
         gameObject.GetComponent<ScoreManager>().ResetScores();
         LeaderBoard.SetActive(false);
-        SceneManager.LoadScene(0);
+		SceneManager.LoadScene(0);
 
     }
 
