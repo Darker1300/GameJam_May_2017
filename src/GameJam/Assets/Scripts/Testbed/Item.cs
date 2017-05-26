@@ -95,7 +95,13 @@ public class Item : MonoBehaviour
                 other.gameObject.GetComponent<BoxCollider>().enabled = false;
                 scoreOwner = i;
                 targetLocation = other.gameObject.transform.parent.transform.position;
-                this.transform.parent.parent.parent.GetComponent<BeltPlateController>().Restock(Random.Range(respawnMin, respawnMax));
+                Transform par = this.transform.parent.parent.parent;
+                if (par)
+                {
+                    BeltPlateController bpc = par.GetComponent<BeltPlateController>();
+                    if (bpc)
+                        bpc.Restock(Random.Range(respawnMin, respawnMax));
+                }
                 Vector3 temp = transform.position; // world pos
                 this.gameObject.transform.SetParent(null, true); // *should* not move.
                                                                  //  this.transform.position = temp; // restore world position
@@ -114,15 +120,15 @@ public class Item : MonoBehaviour
         {
             audioManager.playItemPositiveSound();
             audioManager.playPlayerVacuumSound();
-			Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
         else if (negativeItem)
         {
             audioManager.playItemNegativeSound();
-           audioManager.playPlayerVacuumSound();
-			Destroy(this.gameObject);
+            audioManager.playPlayerVacuumSound();
+            Destroy(this.gameObject);
         }
-      
+
         GameObject go = GameObject.FindGameObjectWithTag("Player" + scoreOwner);
         PlayerController pc = go.GetComponent<PlayerController>();
         if (itemType == ItemType.Danger)
