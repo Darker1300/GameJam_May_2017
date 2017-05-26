@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class RoundManager : MonoBehaviour
 
         durationTimerCurrent = durationTimerStart;
 
-
+        LeaderBoard.SetActive(false);
 
     }
 
@@ -137,6 +138,33 @@ public class RoundManager : MonoBehaviour
             EndBGMPlayed = true;
 
         }
+    }
+    void gameEnd()
+    {
+        gameObject.GetComponent<ScoreManager>().scoreText1.text = "Player 1 SCORE : " + GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().scoreText2.text = "Player 2 SCORE : " + GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().scoreText3.text = "Player 3 SCORE : " + GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().scoreText4.text = "Player 4 SCORE : " + GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>().score;
+
+        LeaderBoard.SetActive(true);
+
+
+    }
+
+    public void gameReset()
+    {
+        gameObject.GetComponent<ScoreManager>().ResetScores();
+        LeaderBoard.SetActive(false);
+        SceneManager.LoadScene(1);
+
+    }
+
+    public void exitToMenu()
+    {
+        gameObject.GetComponent<ScoreManager>().ResetScores();
+        LeaderBoard.SetActive(false);
+        SceneManager.LoadScene(0);
+
     }
 
     #region Events
