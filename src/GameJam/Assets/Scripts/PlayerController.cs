@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
                 }
                     
 
-                if (Input.GetButton("A" + i.ToString()) && !playerIsVacuuming )
+                if (Input.GetButton("A" + i.ToString()) && !playerIsVacuuming && playerMove )
                 {
 
                     Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
@@ -103,12 +103,12 @@ public class PlayerController : MonoBehaviour
                             PlayerVacuum.Play();
                             playerIsVacuuming = true;
                             PlayerVacuum.GetComponent<BoxCollider>().enabled = true;
-                            
+                           // audioManager.playHoveringSound();
                         }
                         vacuumTime = 0;
                     }
                 }
-                if (Input.GetButton("B" + i.ToString()) && !playerIsVacuuming)
+                if (Input.GetButton("B" + i.ToString()) && !playerIsVacuuming && playerMove)
                 {
 
                     Debug.Log("Player" + i.ToString() + "Button A" + i.ToString());
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 newForward = new Vector3(Input.GetAxis("Horizontal" + i.ToString()), 0, Input.GetAxis("Vertical" + i.ToString())).normalized;
                 if (newForward != Vector3.zero && !playerIsVacuuming && playerMove)
                 {
-
+                    
 
                     // set the forward vector of the transform to the newForward vector based on the usersinput
                     // Translate the vector towards the players forward amplified by movement speed

@@ -34,3 +34,4 @@ sysinfo.txt
 *.unitypackage
 src/GameJam/Library/
 src/GameJam/Temp/
+src/GameJam/Assets/ProtoTypes.meta
