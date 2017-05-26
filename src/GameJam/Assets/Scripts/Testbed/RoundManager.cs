@@ -73,12 +73,12 @@ public class RoundManager : MonoBehaviour
 
     void Update()
     {
-        if (startTimerStarted && startTimerCurrent >= 0)
+        if (startTimerStarted)
         {
             startTimerCurrent -= Time.deltaTime;
             RoundTimerChanged.Invoke();
         }
-        if (durationTimerStarted && durationTimerCurrent >= 0)
+        if (durationTimerStarted)
         {
             durationTimerCurrent -= Time.deltaTime;
             RoundDurationChanged.Invoke();
@@ -110,10 +110,13 @@ public class RoundManager : MonoBehaviour
             for (int i = 1; i <= 4; i++)
             {
                 // GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed = GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed * (durationTimerCurrent / 6 + 0.01f);
-                GameObject first = GameObject.FindGameObjectWithTag("Player" + i.ToString());
-                GameObject second = GameObject.FindGameObjectWithTag("Player" + i.ToString());
-                if (first && second)
-                    first.GetComponent<PlayerController>().playerMoveSpeed -= second.GetComponent<PlayerController>().playerMoveSpeed / durationTimerCurrent / (slowDownTimer * 4);
+                GameObject player = GameObject.FindGameObjectWithTag("Player" + i.ToString());
+                PlayerController pc = player.GetComponent<PlayerController>();
+                if (player && durationTimerCurrent > 0)
+                {
+                    pc.playerMoveSpeed -= pc.playerMoveSpeed / (durationTimerCurrent + 0.01f) / (slowDownTimer * 4);
+                    if (pc.playerMoveSpeed <= 0.1f) pc.playerMoveSpeed = 0.1f;
+                }
             }
         }
 
@@ -164,7 +167,7 @@ public class RoundManager : MonoBehaviour
     {
         gameObject.GetComponent<ScoreManager>().ResetScores();
         LeaderBoard.SetActive(false);
-		SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
 
     }
 

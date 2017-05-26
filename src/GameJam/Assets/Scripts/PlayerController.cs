@@ -189,14 +189,15 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetTrigger("ActivateMilk");
 
-		playerMoveSpeed =  playerMoveSpeed - 0.5f;
+        if (playerMoveSpeed >= 0.6f)
+            playerMoveSpeed = playerMoveSpeed - 0.5f;
 
         SteamParticle1.Play(false);
         SteamParticle2.Play(false);
     }
     public void EndSteamEffect()
     {
-       // playerMoveSpeed = 5f;
+        // playerMoveSpeed = 5f;
         SteamParticle1.Stop();
         SteamParticle2.Stop();
     }
