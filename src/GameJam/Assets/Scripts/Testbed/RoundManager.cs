@@ -38,6 +38,8 @@ public class RoundManager : MonoBehaviour
     private bool startBGMPlayed = false;
     private bool EndBGMPlayed = false;
 
+    public int slowDownTimer = 6;
+
     void Start()
     {
         // Events
@@ -94,12 +96,13 @@ public class RoundManager : MonoBehaviour
             startBGMPlayed = true;
         }
 
-        if (durationTimerCurrent <= 6.0f )
+        if (durationTimerCurrent <= slowDownTimer )
         {
-            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().pitch = (durationTimerCurrent/6 + 0.01f);
+            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().pitch = (durationTimerCurrent/slowDownTimer + 0.01f);
             for (int i = 1; i <= 4; i++)
             {
-                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed = GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed * durationTimerCurrent / 6 + 0.01f;
+                // GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed = GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed * (durationTimerCurrent / 6 + 0.01f);
+                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed -= GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed / durationTimerCurrent / (slowDownTimer * 4) ;
             }
         }
 
@@ -115,7 +118,7 @@ public class RoundManager : MonoBehaviour
             EndAudioPlayed = true;
             // GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().;
         }
-        if (durationTimerCurrent <= -3.01f && !EndBGMPlayed)
+        if (durationTimerCurrent <= -4.01f && !EndBGMPlayed)
         {
             GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().Pause();
             GameObject.FindGameObjectWithTag("SBGM").GetComponent<AudioSource>().PlayOneShot(endBGM, endBGMVol);
