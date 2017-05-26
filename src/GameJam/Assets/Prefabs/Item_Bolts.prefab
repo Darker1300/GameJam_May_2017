@@ -166,4 +166,6 @@ MonoBehaviour:
   speedTime: 1
   respawnMin: 4
   respawnMax: 4
-  moveToPlayerSpeed: 0
+  moveToPlayerSpeed: 7
+  positiveItem: 1
+  negativeItem: 0
