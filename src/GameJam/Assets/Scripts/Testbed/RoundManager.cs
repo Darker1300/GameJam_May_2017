@@ -141,10 +141,10 @@ public class RoundManager : MonoBehaviour
     }
     void gameEnd()
     {
-        gameObject.GetComponent<ScoreManager>().scoreText1.text = "Player 1 SCORE : " + GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>().score;
-        gameObject.GetComponent<ScoreManager>().scoreText2.text = "Player 2 SCORE : " + GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().score;
-        gameObject.GetComponent<ScoreManager>().scoreText3.text = "Player 3 SCORE : " + GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerController>().score;
-        gameObject.GetComponent<ScoreManager>().scoreText4.text = "Player 4 SCORE : " + GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().leaderText1.text = "Player 1 SCORE : " + GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().leaderText2.text = "Player 2 SCORE : " + GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().leaderText3.text = "Player 3 SCORE : " + GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().leaderText4.text = "Player 4 SCORE : " + GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>().score;
 
         LeaderBoard.SetActive(true);
 
@@ -230,20 +230,7 @@ public class RoundManager : MonoBehaviour
         // Debug.Log("Round Timer End!");
     }
 
-    void gameEnd()
-    {
-        GetComponent<ScoreManager>().
-        LeaderBoard.SetActive(true);
 
-
-    }
-
-    void gameReset()
-    {
-        LeaderBoard.SetActive(false);
-
-
-    }
 
 
     #endregion

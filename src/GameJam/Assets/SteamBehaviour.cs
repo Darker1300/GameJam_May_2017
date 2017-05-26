@@ -18,7 +18,7 @@ public class SteamBehaviour : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlayerController pc = animator.GetComponent<PlayerController>();
+		PlayerController pc = animator.transform.parent.GetComponent<PlayerController>();
         if (pc)
             pc.EndSteamEffect();
     }
