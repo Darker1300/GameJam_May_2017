@@ -16,6 +16,7 @@ TagManager:
   - AudioManager
   - BGMManager
   - SBGM
+  - LeaderBoard
   layers:
   - Default
   - TransparentFX
