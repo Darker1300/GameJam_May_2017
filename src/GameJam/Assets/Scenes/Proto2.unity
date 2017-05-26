@@ -210,6 +210,9 @@ MonoBehaviour:
   modelForward: 0
   playerIsVacuuming: 0
   vacuumTimer: 0
+  animator: {fileID: 0}
+  SteamParticle1: {fileID: 0}
+  SteamParticle2: {fileID: 0}
 --- !u!135 &54121043
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -292,6 +295,9 @@ MonoBehaviour:
   modelForward: 0
   playerIsVacuuming: 0
   vacuumTimer: 0
+  animator: {fileID: 0}
+  SteamParticle1: {fileID: 0}
+  SteamParticle2: {fileID: 0}
 --- !u!135 &75770416
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4548,6 +4554,9 @@ MonoBehaviour:
   modelForward: 0
   playerIsVacuuming: 0
   vacuumTimer: 0
+  animator: {fileID: 0}
+  SteamParticle1: {fileID: 0}
+  SteamParticle2: {fileID: 0}
 --- !u!135 &663310035
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5288,6 +5297,9 @@ MonoBehaviour:
   endBGMVol: 0
   slowDownTimer: 6
   LeaderBoard: {fileID: 0}
+  TimeText: {fileID: 0}
+  Countdown_Start_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  Countdown_End_Color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &911057008
 Transform:
   m_ObjectHideFlags: 0
@@ -8601,12 +8613,15 @@ MonoBehaviour:
   startTimerStart: 5
   startTimerCurrent: 0
   durationTimerStarted: 0
-  durationTimerStart: 25
+  durationTimerStart: 10
   durationTimerCurrent: 0
   endBGM: {fileID: 8300000, guid: 50e420d3c8fb0b143af14f7c7d871113, type: 3}
   endBGMVol: 1
   slowDownTimer: 6
   LeaderBoard: {fileID: 1049570499}
+  TimeText: {fileID: 1505218116}
+  Countdown_Start_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  Countdown_End_Color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &1269507352
 Transform:
   m_ObjectHideFlags: 0
@@ -8861,6 +8876,9 @@ MonoBehaviour:
   modelForward: 0
   playerIsVacuuming: 0
   vacuumTimer: 0
+  animator: {fileID: 0}
+  SteamParticle1: {fileID: 0}
+  SteamParticle2: {fileID: 0}
 --- !u!135 &1351610630
 SphereCollider:
   m_ObjectHideFlags: 0
