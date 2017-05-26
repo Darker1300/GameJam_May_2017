@@ -490,7 +490,7 @@ Animator:
   m_GameObject: {fileID: 1342326253829096}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f165e92c31e74524399d7e20421dcd2c, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8780f071095b15444b70549b16e84a54, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -517,6 +517,9 @@ MonoBehaviour:
   modelForward: 0
   playerIsVacuuming: 0
   vacuumTimer: 1.5
+  animator: {fileID: 95164195565149606}
+  SteamParticle1: {fileID: 198032156050761712}
+  SteamParticle2: {fileID: 198830690626477516}
 --- !u!135 &135592461037013728
 SphereCollider:
   m_ObjectHideFlags: 1

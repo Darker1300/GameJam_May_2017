@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnWeight: 3
   pointValue: 30
-  itemType: 0
+  itemType: 1
   speedModifier: 0
   speedTime: 1
   respawnMin: 4

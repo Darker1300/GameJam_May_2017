@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
 
     private AudioManager audioManager;
 
+    public Animator animator = null;
+    public ParticleSystem SteamParticle1;
+    public ParticleSystem SteamParticle2;
+
     // Use this for initialization
     void Start()
     {
@@ -180,6 +184,20 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    public void SuckedDanger()
+    {
+        animator.SetTrigger("ActivateMilk");
+
+        SteamParticle1.Play(false);
+        SteamParticle2.Play(false);
+    }
+    public void EndSteamEffect()
+    {
+        SteamParticle1.Stop();
+        SteamParticle2.Stop();
+    }
+
     //if (Input.GetKey(KeyCode.A))
     //{
     //    Player.transform.Translate(-Vector3.right * playerMoveSpeed * Time.deltaTime, Space.World);
