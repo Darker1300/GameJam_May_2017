@@ -50,14 +50,13 @@ public class MenuInputManager : MonoBehaviour
 
     public void StartGame()
     {
+        ControllerStatus.One = P1.sprite == accepted;
+        ControllerStatus.Two = P2.sprite == accepted;
+        ControllerStatus.Three = P3.sprite == accepted;
+        ControllerStatus.Four = P4.sprite == accepted;
+
         if (ControllerStatus.One || ControllerStatus.Two || ControllerStatus.Three || ControllerStatus.Four)
-        {
-            ControllerStatus.One = P1.sprite == accepted;
-            ControllerStatus.Two = P2.sprite == accepted;
-            ControllerStatus.Three = P3.sprite == accepted;
-            ControllerStatus.Four = P4.sprite == accepted;
             SceneManager.LoadScene(1);
-        }
     }
 
     public void GoToMenuScene()
