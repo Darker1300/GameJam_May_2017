@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject Player;
     public ParticleSystem PlayerVacuum;
+    public bool playerMove = false;
 
     [HideInInspector]
     public int score;
@@ -109,13 +110,33 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Player" + i.ToString() + "Button B" + i.ToString());
                 }
                 Vector3 newForward = new Vector3(Input.GetAxis("Horizontal" + i.ToString()), 0, Input.GetAxis("Vertical" + i.ToString())).normalized;
-                if (newForward != Vector3.zero && !playerIsVacuuming)
+                if (newForward != Vector3.zero && !playerIsVacuuming && playerMove)
                 {
 
 
                     // set the forward vector of the transform to the newForward vector based on the usersinput
                     // Translate the vector towards the players forward amplified by movement speed
                     // then set the players rotation manually to offset the camera rotation on the y axis
+                    if (Input.GetKey(KeyCode.A))
+                    {
+                        Player.transform.Translate(-Vector3.right * playerMoveSpeed * Time.deltaTime, Space.World);
+
+                    }
+                    if (Input.GetKey(KeyCode.D))
+                    {
+                        Player.transform.Translate(Vector3.right * playerMoveSpeed * Time.deltaTime, Space.World);
+
+                    }
+                    if (Input.GetKey(KeyCode.W))
+                    {
+                        Player.transform.Translate(Vector3.forward * playerMoveSpeed * Time.deltaTime, Space.World);
+
+                    }
+                    if (Input.GetKey(KeyCode.S))
+                    {
+                        Player.transform.Translate(-Vector3.forward * playerMoveSpeed * Time.deltaTime, Space.World);
+
+                    }
 
                     Player.gameObject.transform.forward = newForward;
                     Player.gameObject.transform.Translate((Vector3.forward - Vector3.right).normalized * playerMoveSpeed * Time.deltaTime);

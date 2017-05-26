@@ -29,6 +29,15 @@ public class RoundManager : MonoBehaviour
     public float durationTimerStart = 45;
     public float durationTimerCurrent = 0;
 
+    private AudioManager audioManager;
+    public AudioClip endBGM;
+    [Range(0.0f, 1.0f)]
+    public float endBGMVol;
+    private bool startAudioPlayed = false;
+    private bool EndAudioPlayed = false;
+    private bool startBGMPlayed = false;
+    private bool EndBGMPlayed = false;
+
     void Start()
     {
         // Events
@@ -42,6 +51,14 @@ public class RoundManager : MonoBehaviour
         // Assume Timer starts as soon as scene loads
         startTimerStarted = true;
         RoundTimerStart.Invoke();
+
+        //audio instance
+        audioManager = AudioManager.instance;
+
+        durationTimerCurrent = durationTimerStart;
+
+
+
     }
 
     void Update()
@@ -53,8 +70,57 @@ public class RoundManager : MonoBehaviour
         }
         if (durationTimerStarted)
         {
-            startTimerCurrent -= Time.deltaTime;
+            durationTimerCurrent -= Time.deltaTime;
             RoundDurationChanged.Invoke();
+
+        }
+
+        // Audio
+        if (startTimerCurrent <= 4 && !startAudioPlayed)
+        {
+            audioManager.playLevelIntroSound();
+            startAudioPlayed = true;
+        }
+        if (startTimerCurrent <= 0 && !startBGMPlayed)
+        {
+
+            for (int i = 1; i <= 4; i++)
+            {
+                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMove = true;
+            }
+            // GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().enabled = true;
+
+            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().Play();
+            startBGMPlayed = true;
+        }
+
+        if (durationTimerCurrent <= 6.0f )
+        {
+            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().pitch = (durationTimerCurrent/6 + 0.01f);
+            for (int i = 1; i <= 4; i++)
+            {
+                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed = GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed * durationTimerCurrent / 6 + 0.01f;
+            }
+        }
+
+            if (durationTimerCurrent <= -0.01f && !EndAudioPlayed)
+        {
+            for (int i = 1; i <= 4; i++)
+            {
+                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMove = false;
+            }
+            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().pitch = 1;
+            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().Stop();
+            audioManager.playLevelEndSound();
+            EndAudioPlayed = true;
+            // GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().;
+        }
+        if (durationTimerCurrent <= -3.01f && !EndBGMPlayed)
+        {
+            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().Pause();
+            GameObject.FindGameObjectWithTag("SBGM").GetComponent<AudioSource>().PlayOneShot(endBGM, endBGMVol);
+            EndBGMPlayed = true;
+
         }
     }
 
@@ -64,6 +130,7 @@ public class RoundManager : MonoBehaviour
         // Debug.Log("Round Start!");
         durationTimerStarted = true;
         durationTimerCurrent = durationTimerStart;
+        
     }
 
     void OnRoundDurationChanged()
@@ -86,6 +153,9 @@ public class RoundManager : MonoBehaviour
 
         beltManager.FillBelt();
         // Show UI
+
+        
+
     }
     void OnRoundTimerChanged()
     {

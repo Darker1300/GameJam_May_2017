@@ -16,77 +16,62 @@ public class AudioManager : MonoBehaviour
 
     [Space]
     // level begin
-    public AudioClip levelIntro;
+    public AudioClip levelIntroSound;
     [Range(0.0f, 1.0f)]
     public float levelIntroVol;
+
+    // level begin
+    public AudioClip levelEndSound;
+    [Range(0.0f, 1.0f)]
+    public float levelEndVol;
+
+    //player vacuum sound
 
     public AudioClip playerVacuumSound;
     [Range(0.0f, 1.0f)]
     public float playerVacuumVol;
+
     // item hit player
-    public AudioClip playerAttackSound;
+    public AudioClip itemHitSound;
     [Range(0.0f, 1.0f)]
     public float playerAttackVol;
-    // item grabbed
-    public AudioClip playerDefaultDeathSound;
+
+    //itemPositive
+    public AudioClip itemPositiveSound;
     [Range(0.0f, 1.0f)]
-    public float playerDefaultDeathVol;
-    //item positive
-    public AudioClip playerAlternateDeathSound1;
+    public float itemPositiveVol;
+
+    //itemNegative
+    public AudioClip itemNegativeSound;
     [Range(0.0f, 1.0f)]
-    public float playerAlternateDeath1Vol;
-    //item negative
-    public AudioClip playerAlternateDeathSound2;
+    public float itemNegativeVol;
+
+    // scorePositive
+    public AudioClip scorePositiveSound;
     [Range(0.0f, 1.0f)]
-    public float playerAlternateDeath2Vol;
-    // score positive
-    public AudioClip arrowHitSound;
+    public float scorePositiveVol;
+
+    //playerCollision
+    public AudioClip playerCollisionSound;
     [Range(0.0f, 1.0f)]
-    public float arrowHitVol;
-    //player collision
-    public AudioClip treeHitSound;
-    [Range(0.0f, 1.0f)]
-    public float treeHitVol;
+    public float playerCollisionVol;
+
     // menu select
-    public AudioClip buildEffectSound;
+    public AudioClip menuSelectSound;
     [Range(0.0f, 1.0f)]
-    public float buildEffectVol;
+    public float menuSelectVol;
+
     // menu scroll
-    public AudioClip enemyhitSound;
+    public AudioClip menuScrollSound;
     [Range(0.0f, 1.0f)]
-    public float enemyhitVol;
+    public float menuScrollVol;
+
     // hovering
-    public AudioClip enemyAttackingSound;
+    public AudioClip hoveringSound;
     [Range(0.0f, 1.0f)]
-    public float enemyAttackingVol;
+    public float hoveringVol;
 
-    public AudioClip enemyDeathSound;
-    [Range(0.0f, 1.0f)]
-    public float enemyDeathVol;
 
-    public AudioClip fireShotSound;
-    [Range(0.0f, 1.0f)]
-    public float fireShotVol;
-
-    public AudioClip iceShotSound;
-    [Range(0.0f, 1.0f)]
-    public float iceShotVol;
-
-    public AudioClip lightningShotSound;
-    [Range(0.0f, 1.0f)]
-    public float lightningShotVol;
-
-    public AudioClip gasEmitterSound;
-    [Range(0.0f, 1.0f)]
-    public float gasEmitterVol;
-
-    public AudioClip scrapCollectSound;
-    [Range(0.0f, 1.0f)]
-    public float scrapCollectVol;
-
-    public AudioClip cantAffordTurretSound;
-    [Range(0.0f, 1.0f)]
-    public float cantAffordTurretVol;
 
     void Awake()
     {
@@ -100,96 +85,63 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-       
+
     }
 
-    public void playPlayerWalkSound()
+    public void playLevelIntroSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(levelIntro, levelIntroVol);
+        GetComponent<AudioSource>().PlayOneShot(levelIntroSound, levelIntroVol);
     }
 
-    public void playPlayerDamagedSound()
+    public void playLevelEndSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(levelEndSound, levelEndVol);
+    }
+
+    public void playPlayerVacuumSound()
     {
         GetComponent<AudioSource>().PlayOneShot(playerVacuumSound, playerVacuumVol);
     }
 
-    public void playPlayererAttackSound()
+    public void playItemHitSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(playerAttackSound, playerAttackVol);
+        GetComponent<AudioSource>().PlayOneShot(itemHitSound, playerAttackVol);
     }
 
-    public void playPlayerDefaultDeathSound()
+    public void playItemPositiveSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(playerDefaultDeathSound, playerDefaultDeathVol);
+        GetComponent<AudioSource>().PlayOneShot(itemPositiveSound, itemPositiveVol);
     }
 
-    public void playPlayerAlternateDeath1Sound()
+    public void playItemNegativeSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(playerAlternateDeathSound1, playerAlternateDeath1Vol);
+        GetComponent<AudioSource>().PlayOneShot(itemNegativeSound, itemNegativeVol);
     }
 
-    public void playPlayerAlternateDeath2Sound()
+    public void playScorePositiveSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(playerAlternateDeathSound2, playerAlternateDeath2Vol);
+        GetComponent<AudioSource>().PlayOneShot(scorePositiveSound, scorePositiveVol);
     }
 
-    public void playArrowhitSound()
+    public void playPlayerCollisionSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(arrowHitSound, arrowHitVol);
+        GetComponent<AudioSource>().PlayOneShot(playerCollisionSound, playerCollisionVol);
     }
 
-    public void playTreehitSound()
+    public void playMenuSelectSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(treeHitSound, treeHitVol);
+        GetComponent<AudioSource>().PlayOneShot(menuSelectSound, menuSelectVol);
     }
 
-    public void playBuildEffectSound()
+    public void playMenuScrollSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(buildEffectSound, buildEffectVol);
+        GetComponent<AudioSource>().PlayOneShot(menuScrollSound, menuScrollVol);
     }
 
-    public void playEnemyHitSound()
+    public void playHoveringSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(enemyhitSound, enemyhitVol);
+        GetComponent<AudioSource>().PlayOneShot(hoveringSound, hoveringVol);
     }
 
-    public void playEnemyAttackingSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(enemyAttackingSound, enemyAttackingVol);
-    }
 
-    public void playEnemyDeathSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(enemyDeathSound, enemyDeathVol);
-    }
-
-    public void playFireTurretSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(fireShotSound, fireShotVol);
-    }
-
-    public void playIceTurretSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(iceShotSound, iceShotVol);
-    }
-
-    public void playLightningTurretSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(lightningShotSound, lightningShotVol);
-    }
-
-    public void playGasEmitterSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(gasEmitterSound, gasEmitterVol);
-    }
-
-    public void playScrapCollectSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(scrapCollectSound, scrapCollectVol);
-    }
-
-    public void playCantAffordTurretSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(cantAffordTurretSound, scrapCollectVol);
-    }
 }
