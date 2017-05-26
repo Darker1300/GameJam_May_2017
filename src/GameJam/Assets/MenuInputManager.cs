@@ -18,6 +18,10 @@ public class MenuInputManager : MonoBehaviour
     public Sprite accepted = null;
     void Start()
     {
+        ControllerStatus.One = false;
+        ControllerStatus.Two = false;
+        ControllerStatus.Three = false;
+        ControllerStatus.Four = false;
     }
 
     void OnDisable()
