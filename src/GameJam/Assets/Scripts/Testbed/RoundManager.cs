@@ -73,16 +73,15 @@ public class RoundManager : MonoBehaviour
 
     void Update()
     {
-        if (startTimerStarted)
+        if (startTimerStarted && startTimerCurrent >= 0)
         {
             startTimerCurrent -= Time.deltaTime;
             RoundTimerChanged.Invoke();
         }
-        if (durationTimerStarted)
+        if (durationTimerStarted && durationTimerCurrent >= 0)
         {
             durationTimerCurrent -= Time.deltaTime;
             RoundDurationChanged.Invoke();
-
         }
 
         // Audio
@@ -134,7 +133,9 @@ public class RoundManager : MonoBehaviour
         {
             gameEnd();
             GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().Pause();
-            GameObject.FindGameObjectWithTag("SBGM").GetComponent<AudioSource>().PlayOneShot(endBGM, endBGMVol);
+            GameObject SBGM = GameObject.FindGameObjectWithTag("SBGM");
+            if (SBGM)
+                SBGM.GetComponent<AudioSource>().PlayOneShot(endBGM, endBGMVol);
             EndBGMPlayed = true;
 
         }
