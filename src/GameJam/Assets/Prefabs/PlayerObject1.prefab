@@ -420,11 +420,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerVacuum: {fileID: 0}
+  playerMove: 0
   score: 0
   playerMoveSpeed: 2
   modelForward: 0
   playerIsVacuuming: 0
-  vacuumTimer: 0
+  vacuumTimer: 1.5
 --- !u!135 &135408888507491414
 SphereCollider:
   m_ObjectHideFlags: 1
