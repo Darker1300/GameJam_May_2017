@@ -26,14 +26,15 @@ public class Item : MonoBehaviour
 
     public enum ItemType
     {
-        Standard
+        Standard,
+        Danger
     }
 
     void Start()
     {
         audioManager = AudioManager.instance;
-    
-      moveToPlayerSpeed = 7f;
+
+        moveToPlayerSpeed = 7f;
     }
 
 
@@ -56,9 +57,9 @@ public class Item : MonoBehaviour
 
             gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * 0.99f,
                 gameObject.transform.localScale.y * 0.99f, gameObject.transform.localScale.z * 0.99f);
-            
 
-              
+
+
         }
 
 
@@ -121,8 +122,11 @@ public class Item : MonoBehaviour
         }
         else
             audioManager.playPlayerVacuumSound();
-        GameObject.FindGameObjectWithTag("Player" + scoreOwner).GetComponent<PlayerController>().score += (int)pointValue;
+        GameObject go = GameObject.FindGameObjectWithTag("Player" + scoreOwner);
+        PlayerController pc = go.GetComponent<PlayerController>();
+        if (itemType == ItemType.Danger)
+            pc.SuckedDanger();
+        pc.score += (int)pointValue;
         Destroy(this.gameObject);
-
     }
 }

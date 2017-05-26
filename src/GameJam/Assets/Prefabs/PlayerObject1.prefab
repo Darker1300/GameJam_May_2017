@@ -517,6 +517,9 @@ MonoBehaviour:
   modelForward: 0
   playerIsVacuuming: 0
   vacuumTimer: 1.5
+  animator: {fileID: 95435648602552192}
+  SteamParticle1: {fileID: 198493148960422822}
+  SteamParticle2: {fileID: 198621509826959436}
 --- !u!135 &135408888507491414
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -3221,7 +3224,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1865371971
+  randomSeed: 304024926
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5858,7 +5861,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1330273228
+  randomSeed: 375167712
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8447,7 +8450,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -308970617
+  randomSeed: -820152717
   InitialModule:
     serializedVersion: 3
     enabled: 1

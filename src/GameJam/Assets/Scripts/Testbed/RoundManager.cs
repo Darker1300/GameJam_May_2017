@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class RoundManager : MonoBehaviour
 
         durationTimerCurrent = durationTimerStart;
 
-
+        LeaderBoard.SetActive(false);
 
     }
 
@@ -138,6 +139,33 @@ public class RoundManager : MonoBehaviour
 
         }
     }
+    void gameEnd()
+    {
+        gameObject.GetComponent<ScoreManager>().scoreText1.text = "Player 1 SCORE : " + GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().scoreText2.text = "Player 2 SCORE : " + GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().scoreText3.text = "Player 3 SCORE : " + GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerController>().score;
+        gameObject.GetComponent<ScoreManager>().scoreText4.text = "Player 4 SCORE : " + GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>().score;
+
+        LeaderBoard.SetActive(true);
+
+
+    }
+
+    public void gameReset()
+    {
+        gameObject.GetComponent<ScoreManager>().ResetScores();
+        LeaderBoard.SetActive(false);
+        SceneManager.LoadScene(1);
+
+    }
+
+    public void exitToMenu()
+    {
+        gameObject.GetComponent<ScoreManager>().ResetScores();
+        LeaderBoard.SetActive(false);
+        SceneManager.LoadScene(0);
+
+    }
 
     #region Events
     void OnRoundStart()
@@ -150,9 +178,16 @@ public class RoundManager : MonoBehaviour
 
     void OnRoundDurationChanged()
     {
-        if (durationTimerCurrent <= 0.0f) RoundEnd.Invoke();
-        TimeText.text = Mathf.CeilToInt(durationTimerCurrent).ToString();
-        TimeText.color = Color.Lerp(Countdown_Start_Color, Countdown_End_Color, 1 - (durationTimerCurrent / durationTimerStart));
+        if (durationTimerCurrent <= 0.0f)
+        {
+            RoundEnd.Invoke();
+            TimeText.text = "STOP!";
+        }
+        else
+        {
+            TimeText.text = Mathf.CeilToInt(durationTimerCurrent).ToString();
+            TimeText.color = Color.Lerp(Countdown_Start_Color, Countdown_End_Color, 1 - (durationTimerCurrent / durationTimerStart));
+        }
     }
 
     void OnRoundEnd()
