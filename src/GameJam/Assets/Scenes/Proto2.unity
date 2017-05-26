@@ -3893,7 +3893,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: be4da5d4a41d0e64394953c59a051000, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2cbc39e591ce24b408bf5f6b365885a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4894,6 +4894,7 @@ GameObject:
   - component: {fileID: 911057008}
   - component: {fileID: 911057007}
   - component: {fileID: 911057006}
+  - component: {fileID: 911057009}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4977,6 +4978,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &911057009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 911057005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b74fc6d17fa0e649a04fa6803309c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelIntro: {fileID: 0}
+  levelIntroVol: 0
+  playerVacuumSound: {fileID: 0}
+  playerVacuumVol: 0
+  playerAttackSound: {fileID: 0}
+  playerAttackVol: 0
+  playerDefaultDeathSound: {fileID: 0}
+  playerDefaultDeathVol: 0
+  playerAlternateDeathSound1: {fileID: 0}
+  playerAlternateDeath1Vol: 0
+  playerAlternateDeathSound2: {fileID: 0}
+  playerAlternateDeath2Vol: 0
+  arrowHitSound: {fileID: 0}
+  arrowHitVol: 0
+  treeHitSound: {fileID: 0}
+  treeHitVol: 0
+  buildEffectSound: {fileID: 0}
+  buildEffectVol: 0
+  enemyhitSound: {fileID: 0}
+  enemyhitVol: 0
+  enemyAttackingSound: {fileID: 0}
+  enemyAttackingVol: 0
+  enemyDeathSound: {fileID: 0}
+  enemyDeathVol: 0
+  fireShotSound: {fileID: 0}
+  fireShotVol: 0
+  iceShotSound: {fileID: 0}
+  iceShotVol: 0
+  lightningShotSound: {fileID: 0}
+  lightningShotVol: 0
+  gasEmitterSound: {fileID: 0}
+  gasEmitterVol: 0
+  scrapCollectSound: {fileID: 0}
+  scrapCollectVol: 0
+  cantAffordTurretSound: {fileID: 0}
+  cantAffordTurretVol: 0
 --- !u!1 &935230050
 GameObject:
   m_ObjectHideFlags: 0
@@ -14557,7 +14605,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 31776329e27c4c34194095d34e61e08d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc5ef701ee491b54eb2b837ac4ec278f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14695,7 +14743,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ea152632f847fb24e832d28d87d698c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b20344e7cd923274d8c65821f948d487, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14765,7 +14813,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 666c2c6aab1aef94fa7e99c4f5c5af8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a87f08cbc7e99924f9d36a58398c4852, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
