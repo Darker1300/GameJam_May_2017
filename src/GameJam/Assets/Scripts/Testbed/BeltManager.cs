@@ -88,7 +88,7 @@ public class BeltManager : MonoBehaviour
     {
         for (int i = 0; i < beltPlates.Count; i++)
         {
-            beltPlates[i].GetComponent<BeltPlateController>().Restock(1.0f);
+            beltPlates[i].GetComponent<BeltPlateController>().Restock(2.4f);
         }
     }
 
