@@ -22,10 +22,10 @@ public class MenuInputManager : MonoBehaviour
 
     void OnDisable()
     {
-        ControllerStatus.One    = P1.sprite == accepted;
-        ControllerStatus.Two    = P2.sprite == accepted;
-        ControllerStatus.Three  = P3.sprite == accepted;
-        ControllerStatus.Four   = P4.sprite == accepted;
+        ControllerStatus.One = P1.sprite == accepted;
+        ControllerStatus.Two = P2.sprite == accepted;
+        ControllerStatus.Three = P3.sprite == accepted;
+        ControllerStatus.Four = P4.sprite == accepted;
 
         P1.sprite = available;
         P2.sprite = available;
@@ -50,11 +50,14 @@ public class MenuInputManager : MonoBehaviour
 
     public void StartGame()
     {
-        ControllerStatus.One = P1.sprite == accepted;
-        ControllerStatus.Two = P2.sprite == accepted;
-        ControllerStatus.Three = P3.sprite == accepted;
-        ControllerStatus.Four = P4.sprite == accepted;
-        SceneManager.LoadScene(1);
+        if (ControllerStatus.One || ControllerStatus.Two || ControllerStatus.Three || ControllerStatus.Four)
+        {
+            ControllerStatus.One = P1.sprite == accepted;
+            ControllerStatus.Two = P2.sprite == accepted;
+            ControllerStatus.Three = P3.sprite == accepted;
+            ControllerStatus.Four = P4.sprite == accepted;
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void GoToMenuScene()
