@@ -105,7 +105,10 @@ public class RoundManager : MonoBehaviour
             for (int i = 1; i <= 4; i++)
             {
                 // GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed = GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed * (durationTimerCurrent / 6 + 0.01f);
-                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed -= GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed / durationTimerCurrent / (slowDownTimer * 4);
+                GameObject first = GameObject.FindGameObjectWithTag("Player" + i.ToString());
+                GameObject second = GameObject.FindGameObjectWithTag("Player" + i.ToString());
+                if (first && second)
+                    first.GetComponent<PlayerController>().playerMoveSpeed -= second.GetComponent<PlayerController>().playerMoveSpeed / durationTimerCurrent / (slowDownTimer * 4);
             }
         }
 
