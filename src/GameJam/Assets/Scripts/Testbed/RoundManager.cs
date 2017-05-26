@@ -153,6 +153,7 @@ public class RoundManager : MonoBehaviour
         if (durationTimerCurrent <= 0.0f)
         {
             RoundEnd.Invoke();
+            TimeText.text = "STOP!";
         }
         else
         {
