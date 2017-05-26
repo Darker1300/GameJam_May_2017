@@ -16,7 +16,7 @@ public class Item : MonoBehaviour
     public float respawnMax = 4;
 
     public float moveToPlayerSpeed = 7f;
-    private int scoreOwner;
+    private int scoreOwner = 0;
 
     Vector3 targetLocation;
     private bool sucked = false;
@@ -117,8 +117,8 @@ public class Item : MonoBehaviour
         }
         else if (negativeItem)
         {
-            audioManager.playItemNegativeSound();
-            audioManager.playPlayerVacuumSound();
+           // audioManager.playItemNegativeSound();
+           //audioManager.playPlayerVacuumSound();
         }
         else
             audioManager.playPlayerVacuumSound();
