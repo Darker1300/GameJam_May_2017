@@ -4968,6 +4968,7 @@ MonoBehaviour:
   durationTimerCurrent: 0
   endBGM: {fileID: 0}
   endBGMVol: 0
+  slowDownTimer: 6
 --- !u!4 &911057008
 Transform:
   m_ObjectHideFlags: 0
@@ -8279,10 +8280,11 @@ MonoBehaviour:
   startTimerStart: 5
   startTimerCurrent: 0
   durationTimerStarted: 0
-  durationTimerStart: 45
+  durationTimerStart: 25
   durationTimerCurrent: 0
   endBGM: {fileID: 8300000, guid: 50e420d3c8fb0b143af14f7c7d871113, type: 3}
   endBGMVol: 1
+  slowDownTimer: 6
 --- !u!4 &1269507352
 Transform:
   m_ObjectHideFlags: 0
@@ -8402,7 +8404,7 @@ GameObject:
   - component: {fileID: 1307284762}
   m_Layer: 0
   m_Name: SBGM Manager
-  m_TagString: BGMManager
+  m_TagString: SBGM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8429,7 +8431,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1f73e92f500936945a6b4b30466c5d45, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 50e420d3c8fb0b143af14f7c7d871113, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

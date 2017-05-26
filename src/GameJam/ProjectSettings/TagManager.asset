@@ -15,6 +15,7 @@ TagManager:
   - BeltManager
   - AudioManager
   - BGMManager
+  - SBGM
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    private AudioManager audioManager;
+
     public float spawnWeight = 1.0f;
     public float pointValue = 1.0f;
     public ItemType itemType = ItemType.Standard;
@@ -13,11 +15,14 @@ public class Item : MonoBehaviour
     public float respawnMin = 4;
     public float respawnMax = 4;
 
-    public float moveToPlayerSpeed;
+    public float moveToPlayerSpeed = 7f;
     private int scoreOwner;
 
     Vector3 targetLocation;
     private bool sucked = false;
+
+    public bool positiveItem;
+    public bool negativeItem;
 
     public enum ItemType
     {
@@ -26,7 +31,9 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        moveToPlayerSpeed = 7f;
+        audioManager = AudioManager.instance;
+    
+      moveToPlayerSpeed = 7f;
     }
 
 
@@ -83,12 +90,13 @@ public class Item : MonoBehaviour
         {
             if (other.gameObject.tag == "Vacuum" + i.ToString() && other.gameObject.transform.parent.GetComponent<PlayerController>().PlayerVacuum)
             {
+                audioManager.playItemHitSound();
                 other.gameObject.GetComponent<BoxCollider>().enabled = false;
                 scoreOwner = i;
                 targetLocation = other.gameObject.transform.parent.transform.position;
                 this.transform.parent.parent.parent.GetComponent<BeltPlateController>().Restock(Random.Range(respawnMin, respawnMax));
                 Vector3 temp = transform.position; // world pos
-                this.gameObject.transform.SetParent(null, true); // *should* not move, but you say...
+                this.gameObject.transform.SetParent(null, true); // *should* not move.
                                                                  //  this.transform.position = temp; // restore world position
                 sucked = true;
                 // Debug.Log("sucked");
@@ -101,7 +109,18 @@ public class Item : MonoBehaviour
     void HitTarget()
     {
         //Debug.Log(scoreOwner);
-
+        if (positiveItem)
+        {
+            audioManager.playItemPositiveSound();
+            audioManager.playPlayerVacuumSound();
+        }
+        else if (negativeItem)
+        {
+            audioManager.playItemNegativeSound();
+            audioManager.playPlayerVacuumSound();
+        }
+        else
+            audioManager.playPlayerVacuumSound();
         GameObject.FindGameObjectWithTag("Player" + scoreOwner).GetComponent<PlayerController>().score += (int)pointValue;
         Destroy(this.gameObject);
 
