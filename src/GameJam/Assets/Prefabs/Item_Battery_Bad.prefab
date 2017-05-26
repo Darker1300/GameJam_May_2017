@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c93833e0d1b16449de4a4205e33434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnWeight: 1
-  pointValue: 1
+  spawnWeight: 5
+  pointValue: 50
   itemType: 0
   speedModifier: 0
   speedTime: 1
