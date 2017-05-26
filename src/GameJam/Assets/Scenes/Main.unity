@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 79683906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: -0.27313614, z: 22.66}
+  m_LocalPosition: {x: 5.34, y: 1.03, z: 21.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670714146}
@@ -218,7 +218,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.5407115, b: 0.5407115, a: 1}
   m_Intensity: 1
-  m_Range: 34.1
+  m_Range: 36.9
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -2969,7 +2969,7 @@ Prefab:
     - target: {fileID: 114711432476891334, guid: dc53c872d7e29ba479dd29273dd98d0a,
         type: 2}
       propertyPath: BeltRadius
-      value: 10.11
+      value: 9.97
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
