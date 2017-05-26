@@ -40,6 +40,8 @@ public class RoundManager : MonoBehaviour
 
     public int slowDownTimer = 6;
 
+    public GameObject LeaderBoard;
+
     void Start()
     {
         // Events
@@ -88,7 +90,8 @@ public class RoundManager : MonoBehaviour
 
             for (int i = 1; i <= 4; i++)
             {
-                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMove = true;
+                GameObject go = GameObject.FindGameObjectWithTag("Player" + i.ToString());
+                if (go) go.GetComponent<PlayerController>().playerMove = true;
             }
             // GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().enabled = true;
 
@@ -96,17 +99,17 @@ public class RoundManager : MonoBehaviour
             startBGMPlayed = true;
         }
 
-        if (durationTimerCurrent <= slowDownTimer )
+        if (durationTimerCurrent <= slowDownTimer)
         {
-            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().pitch = (durationTimerCurrent/slowDownTimer + 0.01f);
+            GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().pitch = (durationTimerCurrent / slowDownTimer + 0.01f);
             for (int i = 1; i <= 4; i++)
             {
                 // GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed = GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed * (durationTimerCurrent / 6 + 0.01f);
-                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed -= GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed / durationTimerCurrent / (slowDownTimer * 4) ;
+                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed -= GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed / durationTimerCurrent / (slowDownTimer * 4);
             }
         }
 
-            if (durationTimerCurrent <= -0.01f && !EndAudioPlayed)
+        if (durationTimerCurrent <= -0.01f && !EndAudioPlayed)
         {
             for (int i = 1; i <= 4; i++)
             {
@@ -120,6 +123,7 @@ public class RoundManager : MonoBehaviour
         }
         if (durationTimerCurrent <= -4.01f && !EndBGMPlayed)
         {
+            gameEnd();
             GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().Pause();
             GameObject.FindGameObjectWithTag("SBGM").GetComponent<AudioSource>().PlayOneShot(endBGM, endBGMVol);
             EndBGMPlayed = true;
@@ -133,7 +137,7 @@ public class RoundManager : MonoBehaviour
         // Debug.Log("Round Start!");
         durationTimerStarted = true;
         durationTimerCurrent = durationTimerStart;
-        
+
     }
 
     void OnRoundDurationChanged()
@@ -157,7 +161,7 @@ public class RoundManager : MonoBehaviour
         beltManager.FillBelt();
         // Show UI
 
-        
+
 
     }
     void OnRoundTimerChanged()
@@ -178,6 +182,22 @@ public class RoundManager : MonoBehaviour
         //}
         // Debug.Log("Round Timer End!");
     }
+
+    void gameEnd()
+    {
+        GetComponent<ScoreManager>().
+        LeaderBoard.SetActive(true);
+
+
+    }
+
+    void gameReset()
+    {
+        LeaderBoard.SetActive(false);
+
+
+    }
+
 
     #endregion
 }

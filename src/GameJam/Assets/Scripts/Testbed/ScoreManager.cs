@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager : MonoBehaviour
+{
 
     static int p1score;
     static int p2score;
@@ -23,23 +24,46 @@ public class ScoreManager : MonoBehaviour {
 
     public GameObject LeaderBoard;
 
-    void Start () {
+    void Start()
+    {
+        p1score = -1;
+        p2score = -1;
+        p3score = -1;
+        p4score = -1;
         ResetScores();
-	}
+    }
 
     void Update()
     {
-     
-        p1score = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>().score;
-        p2score = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().score;
-        p3score = GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerController>().score;
-        p4score = GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>().score;
+        GameObject go = null;
 
-        scoreText1.text = "Score" + " \n" + p1score;
-        scoreText2.text = "Score" + " \n" + p2score;
-        scoreText3.text = "Score" + " \n" + p3score;
-        scoreText4.text = "Score" + " \n" + p4score;
+        go = GameObject.FindGameObjectWithTag("Player1");
+        if (go)
+        {
+            p1score = go.GetComponent<PlayerController>().score;
+            scoreText1.text = "Score" + " \n" + p1score;
+        }
 
+        go = GameObject.FindGameObjectWithTag("Player2");
+        if (go)
+        {
+            p2score = go.GetComponent<PlayerController>().score;
+            scoreText2.text = "Score" + " \n" + p2score;
+        }
+
+        go = GameObject.FindGameObjectWithTag("Player3");
+        if (go)
+        {
+            p3score = go.GetComponent<PlayerController>().score;
+            scoreText3.text = "Score" + " \n" + p3score;
+        }
+
+        go = GameObject.FindGameObjectWithTag("Player4");
+        if (go)
+        {
+            p4score = go.GetComponent<PlayerController>().score;
+            scoreText4.text = "Score" + " \n" + p4score;
+        }
     }
 
     public void AddItemToScore(PlayerController _player, Item _item)
