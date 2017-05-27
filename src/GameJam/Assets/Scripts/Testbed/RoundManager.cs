@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Controller;
 
 public class RoundManager : MonoBehaviour
 {
@@ -85,7 +86,7 @@ public class RoundManager : MonoBehaviour
         }
 
         // Audio
-        if (startTimerCurrent <= 4 && !startAudioPlayed)
+        if (startTimerCurrent <= 3 && !startAudioPlayed)
         {
             audioManager.playLevelIntroSound();
             startAudioPlayed = true;
@@ -111,11 +112,14 @@ public class RoundManager : MonoBehaviour
             {
                 // GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed = GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMoveSpeed * (durationTimerCurrent / 6 + 0.01f);
                 GameObject player = GameObject.FindGameObjectWithTag("Player" + i.ToString());
-                PlayerController pc = player.GetComponent<PlayerController>();
-                if (player && durationTimerCurrent > 0)
+                if (player)
                 {
-                    pc.playerMoveSpeed -= pc.playerMoveSpeed / (durationTimerCurrent + 0.01f) / (slowDownTimer * 4);
-                    if (pc.playerMoveSpeed <= 0.1f) pc.playerMoveSpeed = 0.1f;
+                    PlayerController pc = player.GetComponent<PlayerController>();
+                    if (pc && durationTimerCurrent > 0)
+                    {
+                        pc.playerMoveSpeed -= pc.playerMoveSpeed / (durationTimerCurrent + 0.01f) / (slowDownTimer * 4);
+                        if (pc.playerMoveSpeed <= 0.1f) pc.playerMoveSpeed = 0.1f;
+                    }
                 }
             }
         }
@@ -124,7 +128,8 @@ public class RoundManager : MonoBehaviour
         {
             for (int i = 1; i <= 4; i++)
             {
-                GameObject.FindGameObjectWithTag("Player" + i.ToString()).GetComponent<PlayerController>().playerMove = false;
+                GameObject go = GameObject.FindGameObjectWithTag("Player" + i.ToString());
+                if (go) go.GetComponent<PlayerController>().playerMove = false;
             }
             GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().pitch = 1;
             GameObject.FindGameObjectWithTag("BGMManager").GetComponent<AudioSource>().Stop();
@@ -145,14 +150,26 @@ public class RoundManager : MonoBehaviour
     }
     void gameEnd()
     {
-        gameObject.GetComponent<ScoreManager>().leaderText1.text = "Player 1 SCORE : " + GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>().score;
-        gameObject.GetComponent<ScoreManager>().leaderText2.text = "Player 2 SCORE : " + GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>().score;
-        gameObject.GetComponent<ScoreManager>().leaderText3.text = "Player 3 SCORE : " + GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerController>().score;
-        gameObject.GetComponent<ScoreManager>().leaderText4.text = "Player 4 SCORE : " + GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>().score;
+        ScoreManager sm = gameObject.GetComponent<ScoreManager>();
+        GameObject p = null;
+
+        p = GameObject.FindGameObjectWithTag("Player1");
+        if (p && ControllerStatus.One) sm.leaderText1.text = "Player 1 SCORE : " + p.GetComponent<PlayerController>().score;
+        else sm.leaderText1.gameObject.SetActive(false);
+
+        p = GameObject.FindGameObjectWithTag("Player2");
+        if (p && ControllerStatus.Two) sm.leaderText2.text = "Player 2 SCORE : " + p.GetComponent<PlayerController>().score;
+        else sm.leaderText2.gameObject.SetActive(false);
+
+        p = GameObject.FindGameObjectWithTag("Player3");
+        if (p && ControllerStatus.Three) sm.leaderText3.text = "Player 3 SCORE : " + p.GetComponent<PlayerController>().score;
+        else sm.leaderText3.gameObject.SetActive(false);
+
+        p = GameObject.FindGameObjectWithTag("Player4");
+        if (p && ControllerStatus.Four) sm.leaderText4.text = "Player 4 SCORE : " + p.GetComponent<PlayerController>().score;
+        else sm.leaderText4.gameObject.SetActive(false);
 
         LeaderBoard.SetActive(true);
-
-
     }
 
     public void gameReset()
@@ -160,7 +177,6 @@ public class RoundManager : MonoBehaviour
         gameObject.GetComponent<ScoreManager>().ResetScores();
         LeaderBoard.SetActive(false);
         SceneManager.LoadScene(1);
-
     }
 
     public void exitToMenu()

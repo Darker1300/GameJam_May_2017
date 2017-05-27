@@ -95,19 +95,22 @@ public class Item : MonoBehaviour
                 other.gameObject.GetComponent<BoxCollider>().enabled = false;
                 scoreOwner = i;
                 targetLocation = other.gameObject.transform.parent.transform.position;
-                Transform par = this.transform.parent.parent.parent;
-                if (par)
+                if (transform.root != this.transform)
                 {
-                    BeltPlateController bpc = par.GetComponent<BeltPlateController>();
-                    if (bpc)
-                        bpc.Restock(Random.Range(respawnMin, respawnMax));
+                    Transform par = this.transform.parent.parent.parent;
+                    if (par)
+                    {
+                        BeltPlateController bpc = par.GetComponent<BeltPlateController>();
+                        if (bpc)
+                            bpc.Restock(Random.Range(respawnMin, respawnMax));
+                    }
+                    Vector3 temp = transform.position; // world pos
+                    this.gameObject.transform.SetParent(null, true); // *should* not move.
+                                                                     //  this.transform.position = temp; // restore world position
+                    sucked = true;
+                    // Debug.Log("sucked");
+                    //destroy 
                 }
-                Vector3 temp = transform.position; // world pos
-                this.gameObject.transform.SetParent(null, true); // *should* not move.
-                                                                 //  this.transform.position = temp; // restore world position
-                sucked = true;
-                // Debug.Log("sucked");
-                //destroy 
             }
         }
 

@@ -464,10 +464,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Joystick = Move
-
-
-    A Button = Collect Item'
+  m_Text: "Controller (1-4 Players)\n\u2192 Joystick\t= Move\n\u2192 A/B\t\t\t= Collect
+    Item\n\nKeyboard (2 Players)\n\tPlayer 1\n\t\u2192 WASD\t\t=\tMove\n\t\u2192 E/R\t\t\t=\tCollect
+    Item\n\tPlayer 2\n\t\u2192 Arrow Keys\t\t\t\t\t= Move\n\t\u2192 Keypad 0/Keypad
+    [.]\t= Collect Item"
 --- !u!222 &302452016
 CanvasRenderer:
   m_ObjectHideFlags: 0
