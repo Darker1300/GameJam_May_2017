@@ -1798,7 +1798,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1832,19 +1832,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42db990f5944ba04f92847c861323889, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.63486475
+      value: 0.6348647
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42db990f5944ba04f92847c861323889, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5485121
+      value: 0.54851204
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42db990f5944ba04f92847c861323889, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.40842345
+      value: 0.4084234
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42db990f5944ba04f92847c861323889, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.35954365
+      value: -0.35954362
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42db990f5944ba04f92847c861323889, type: 3}
       propertyPath: m_RootOrder
@@ -2447,7 +2447,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 50e420d3c8fb0b143af14f7c7d871113, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2503,7 +2503,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -3190,6 +3190,34 @@ Prefab:
       propertyPath: BeltRadius
       value: 9.97
       objectReference: {fileID: 0}
+    - target: {fileID: 4544816540875836, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544816540875836, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544816540875836, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.039998945
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544816540875836, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.019997986
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544816540875836, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544816540875836, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544816540875836, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc53c872d7e29ba479dd29273dd98d0a, type: 2}
   m_IsPrefabParent: 0
@@ -3277,7 +3305,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
